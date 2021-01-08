@@ -30,7 +30,9 @@ namespace WholesaleValidation
 
             services.AddValidatorsFromAssembly(typeof(Startup).Assembly);
 
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
 
             services.AddSwaggerGen(c =>
             {
